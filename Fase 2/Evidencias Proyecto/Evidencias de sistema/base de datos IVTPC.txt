@@ -1,0 +1,100 @@
+-- Tabla de Usuarios (Simulando tu sistema actual)
+create table users (
+  id text primary key,
+  "nombreCompleto" text,
+  email text,
+  telefono text,
+  rol text,
+  estado text,
+  password text
+);
+
+-- Tabla de Vehículos
+create table vehicles (
+  id text primary key,
+  patente text,
+  marca text,
+  modelo text,
+  chofer text,
+  "choferId" text,
+  llegada timestamptz
+);
+
+-- Tabla de Citas
+create table appointments (
+  id text primary key,
+  marca text,
+  modelo text,
+  patente text,
+  chofer text,
+  fecha timestamptz,
+  motivo text,
+  "estadoReparacion" text,
+  "fechaFinalizacionEstimada" timestamptz,
+  "customStatus" text,
+  imagenes text[], -- Array de strings para URLs
+  "comentariosMecanico" text
+);
+
+-- Tabla de Reportes
+create table maintenance_reports (
+  id text primary key,
+  "reportDate" timestamptz,
+  "vehicleModel" text,
+  "vehicleBrand" text,
+  "vehicleYear" text,
+  "vehicleLicensePlate" text,
+  "driverName" text,
+  "scheduledAppointment" timestamptz,
+  "maintenanceStart" timestamptz,
+  "maintenanceEnd" timestamptz,
+  "preMaintenanceComments" text,
+  "workDoneComments" text,
+  "mechanicNotes" text,
+  "beforeImage" text,
+  "afterImage" text
+);
+
+-- Tabla de Notificaciones
+create table notifications (
+  id text primary key,
+  "userId" text,
+  "messageKey" text,
+  read boolean,
+  timestamp timestamptz
+);
+
+-- Tabla de Documentos
+create table technical_documents (
+  id text primary key,
+  name text,
+  "uploadDate" timestamptz,
+  "fileType" text,
+  "fileData" text, -- Guardaremos la URL o Base64 aquí
+  "fileSize" numeric
+);
+
+
+INSERT INTO users (id, "nombreCompleto", email, telefono, rol, estado, password)
+VALUES 
+('usr-001', 'Tomás Pérez', 'admin@transporte.com', '923456789', 'Administrador', 'Activo', 'papas'),
+('usr-002', 'Roberto Montenegro', 'supervisor@transporte.com', '922223333', 'Supervisor', 'Bloqueado', '123'),
+('usr-003', 'Gonzalo Montoya', 'chofer@transporte.com', '933334444', 'Chofer', 'Activo', '123'),
+('usr-004', 'Viktor Castilla', 'mecanico@transporte.com', '955556666', 'Mecanico', 'Activo', 'mecanico') ;
+
+INSERT INTO users (id, "nombreCompleto", email, telefono, rol, estado, password)
+VALUES 
+;
+
+INSERT INTO users (id, "nombreCompleto", email, telefono, rol, estado, password)
+VALUES 
+;
+
+INSERT INTO users (id, "nombreCompleto", email, telefono, rol, estado, password)
+VALUES 
+;
+
+
+UPDATE users 
+set password = 'papas'
+Where id = 'usr-001'
